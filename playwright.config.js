@@ -28,7 +28,7 @@ export default defineConfig({
   
   timeout: 40000, // Global timeout for each test
   expect: {
-    timeout: 20000, // Timeout for Playwright assertions
+    timeout: 40000, // Timeout for Playwright assertions
   },
 
   use: {

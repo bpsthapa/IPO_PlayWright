@@ -5,19 +5,23 @@ const { myKey } = require('./MyKeywords');
 exports.poManager = class PageObjectManager {
     constructor(page) {
         this.page = page;
-        this.myAsba =new myAsba(this.page)
-        this.myKey =new myKey(this.page)
+        this.myAsba = new myAsba(this.page);
+        this.myKey = new myKey(this.page);
     }
 
+    /**
+     * 
+     * @returns {myAsba}
+     */
     myAsba()
-{
-    return this.myAsba;
-}
+    {
+        return this.myAsba;
+    }
 
-myKey()
-{
-    return this.myKey;
-}
+    myKey()
+    {
+        return this.myKey;
+    }
 
 
 

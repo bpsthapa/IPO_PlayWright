@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const { console } = require('inspector');
 
 exports.myAsba = class MyAsba {
 
@@ -7,6 +8,7 @@ exports.myAsba = class MyAsba {
   }
 
   async visitUrl() {
+    console.log('working');
     await this.page.goto('https://playwright.dev');
   }
 
@@ -31,19 +33,22 @@ async SelectIPO() {
     await this.page.waitForLoadState('networkidle'); //all the network items are loaded
     await this.page.locator("span[tooltip='Share Group']").last().waitFor();
     
-    logicToEnterEntoAppyPage();
+    await this.logicToEnterEntoAppyPage();
     
 }
 
 
 async EnterDetailsIPO(bank, crn) {
     const text = await this.page.locator(":nth-child(5) > .form-group > .form-value > span").textContent();
+    console.log("The Cost of Stock Per Share is :"+text)
+
     const cost = parseInt(text, 10);
+    console.log('Cost of share per kitta:', cost);
 
     const Highprice=300;
     const lowPrice=90
     // Log and perform the assertion
-    console.log('Cost of share per kitta:', cost);
+   
 
 
     // Assert that cost is less than Highprice
@@ -70,17 +75,10 @@ async ClickOnSubmitButton(pin) {
     //Type in the transaction PIN
     await this.page.fill('#transactionPIN', pin);
     console.log("Click on Confirm button")
-
+    await this.page.pause();
     await page.waitForTimeout(300000);
     //await this.page.click("div[class='confirm-page-btn'] button[type='submit']")
 }  
-
-
-
-
-
-
-
 
 async logicToEnterEntoAppyPage()
 {
@@ -93,33 +91,46 @@ async logicToEnterEntoAppyPage()
 
     for(let i=0; i<count; ++i)
     {
-        const shareType="\n                  Ordinary Shares\n                ";
+        //const shareType="\n                  Ordinary Shares\n                ";
         const availableShareType=await listedShare.nth(i).locator("span[tooltip='Share Group']").textContent();
         console.log(availableShareType)
-        if(availableShareType==shareType)
+        if(availableShareType.includes('Ordinary Shares'))
+        //if(availableShareType==shareType)
         {
-        console.log("inside if")
+        console.log("inside if and value of i is "+i)
         //inside div.company-list.nth(1)
-        await listedShare.nth(i).click("text=Apply");
+        //await listedShare.nth(i).click("//button[@type='button']");
+          const a=i+1
+          await this.page.click("(//i[contains(text(),'Apply')])["+a+"]")
+
         }
     }
 }
 
 async logicToEnterEntoAppyPageall()
 {
+  const ShareWithApply=await this.page.locator("//button[contains(@class, 'btn-issue')]//i[text()='Apply']")
+  const count=await ShareWithApply.count();
   const listedShare=await this.page.locator("div.company-list")
-  const count=await listedShare.count();
-  console.log("The number of listed share is: "+count)
+  console.log("The number of listed share is with apply button is :"+count)
 
   for(let i=0; i<count; ++i)
   {
-      await listedShare.nth(i).click("text=Apply");
+      await ShareWithApply.nth(i).click("text=Apply");
       const ShareType=await this.page.locator("//span[@tooltip='Share Group' and @class='isin']").textContent();
 
       if(shareType.includes('Ordinary Shares'))
       {
         console.log("inside if")
         //inside div.company-list.nth(1)
+        const AppylyButton=await page.locator("text=Apply").isVisible()
+
+        const isApplyVisible = await page.locator("text=Apply").isVisible();
+    
+          if (!(await page.locator("text=Apply").isVisible())) {
+            return; // Exit out of if condition if "Apply" button is not visible
+          }
+          
         await listedShare.nth(i).click("text=Apply");
       }
       else

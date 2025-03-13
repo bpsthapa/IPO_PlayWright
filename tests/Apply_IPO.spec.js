@@ -14,7 +14,7 @@ test('My IPO', async ({ page }) => {
         console.log('Ordinary Share is Available');
         await asba.SelectIPO();
         await asba.EnterDetailsIPO(data.Bank1,data.Casba1);
-        await asba.ClickOnSubmitButton(data.pin)
+        await asba.ClickOnSubmitButton(data.Pin)
     } 
     else 
     {
@@ -27,11 +27,12 @@ test('Dad IPO', async ({ page }) => {
     await page.goto(data.Url);
     await asba.Login(data.UserName2,data.Password2);
     await asba.NavigateToMyAsba();
+    await page.waitForTimeout(4000);
     if (await page.locator(ordinaryShare).isVisible()) {
         console.log('Ordinary Share is Available');
         await asba.SelectIPO();
         await asba.EnterDetailsIPO(data.Bank2,data.Casba2);
-        await asba.ClickOnSubmitButton(data.pin)
+        await asba.ClickOnSubmitButton(data.Pin)
     } 
     else 
     {
@@ -44,14 +45,19 @@ test('Dad IPO', async ({ page }) => {
     await page.goto(data.Url);
     await asba.Login(data.UserName3,data.Password3);
     await asba.NavigateToMyAsba();
+    await page.waitForTimeout(4000);
     if (await page.locator(ordinaryShare).isVisible()) {
         console.log('Ordinary Share is Available');
         await asba.SelectIPO();
         await asba.EnterDetailsIPO(data.Bank3,data.Casba3);
-        await asba.ClickOnSubmitButton(data.pin)
+        await asba.ClickOnSubmitButton(data.Pin)
     } 
     else 
     {
         console.log('Ordianary Share is not found.');
     }
   });
+
+
+
+  //npx playwright test /Users/Bipinlp/Documents/Bps_Automation/IPO_PlayWright/tests/Apply_IPO.spec.js
