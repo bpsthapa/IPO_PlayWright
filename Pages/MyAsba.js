@@ -38,10 +38,10 @@ async SelectIPO() {
 }
 
 
-async EnterDetailsIPO(bank, crn) {
+async EnterDetailsIPO(bank, crn) {  
+    await this.page.waitForTimeout(2000);
     const text = await this.page.locator(":nth-child(5) > .form-group > .form-value > span").textContent();
     console.log("The Cost of Stock Per Share is :"+text)
-
     const cost = parseInt(text, 10);
     console.log('Cost of share per kitta:', cost);
 
@@ -75,9 +75,10 @@ async ClickOnSubmitButton(pin) {
     //Type in the transaction PIN
     await this.page.fill('#transactionPIN', pin);
     console.log("Click on Confirm button")
-    await this.page.pause();
-    await page.waitForTimeout(300000);
-    //await this.page.click("div[class='confirm-page-btn'] button[type='submit']")
+    //await this.page.pause();
+    // await page.waitForTimeout(300000);
+    await this.page.click("div[class='confirm-page-btn'] button[type='submit']")
+    console.log("The ipo has been applied")
 }  
 
 async logicToEnterEntoAppyPage()
