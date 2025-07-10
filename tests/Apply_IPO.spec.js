@@ -23,6 +23,7 @@ test.describe.serial('Login and Dashboard Flow - Series', () => {
         {
                 console.log('Ordianary Share is not found.');
         }
+        onsole.log('Share applied successfuly for Bipin Thapa')
     });
 
     test('Dad IPO', async ({ page }) => {
@@ -41,6 +42,7 @@ test.describe.serial('Login and Dashboard Flow - Series', () => {
         {
                 console.log('Ordianary Share is not found.');
         }
+        onsole.log('Share applied successfuly for Dad')
     });
 
     test('Mom IPO', async ({ page }) => {
@@ -59,9 +61,9 @@ test.describe.serial('Login and Dashboard Flow - Series', () => {
         {
             console.log('Ordianary Share is not found.');
         }
+        onsole.log('Share applied successfuly for Mom')
     });
 });
-
 
 
   //npx playwright test /Users/Bipinlp/Documents/Bps_Automation/IPO_PlayWright/tests/Apply_IPO.spec.js
