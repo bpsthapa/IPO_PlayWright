@@ -47,9 +47,6 @@ async EnterDetailsIPO(bank, crn) {
 
     const Highprice=300;
     const lowPrice=90
-    // Log and perform the assertion
-   
-
 
     // Assert that cost is less than Highprice
     expect(cost).toBeLessThan(Highprice);
@@ -98,11 +95,19 @@ async logicToEnterEntoAppyPage()
         if(availableShareType.includes('Ordinary Shares'))
         //if(availableShareType==shareType)
         {
-        console.log("inside if and value of i is "+i)
-        //inside div.company-list.nth(1)
-        //await listedShare.nth(i).click("//button[@type='button']");
+          console.log("inside if and value of i is "+i)
+
           const a=i+1
-          await this.page.click("(//i[contains(text(),'Apply')])["+a+"]")
+          //await this.page.click("(//i[contains(text(),'Apply')])["+a+"]")
+
+          try {
+            await this.page.click("(//i[contains(text(),'Apply')])[" + a + "]");
+          }
+          catch (error) {
+            console.warn(`Apply Button not found inside Ordainary Share:`, error);
+            continue; // continue to next iteration
+          }
+          
 
         }
     }
