@@ -21,6 +21,7 @@ This project leverages Playwright to automate browser testing for IPO-related wo
 - Cross-browser testing (Chromium, Firefox, WebKit)
 - Headless and headed execution
 - Easy test authoring and debugging
+- CI/CD integration ready
 
 ## Installation
 
