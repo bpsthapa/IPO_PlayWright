@@ -1,9 +1,10 @@
-const { test, expect } = require('@playwright/test');
-const { myAsba } = require('../Pages/MyAsba');
-const data=JSON.parse(JSON.stringify(require("../testData/Info.json")));
+import { test, expect } from '@playwright/test';
+import { myAsba } from '../Pages/MyAsba';
+import data from '../testData/Info.json';
+
 const ordinaryShare="//span[contains(text(),'Ordinary Shares')]";
 
-test.describe.serial('Login and Dashboard Flow - Series', () => {
+test.describe('Login and Dashboard Flow - Series', () => {
 
     test('My IPO', async ({ page }) => {
         const asba = new myAsba(page);
@@ -21,11 +22,12 @@ test.describe.serial('Login and Dashboard Flow - Series', () => {
             await asba.EnterDetailsIPO(data.Bank1,data.Casba1);
             console.log('Entered All the Details');
             await asba.ClickOnSubmitButton(data.Pin)
-            console.log('✅ ✅ ✅Share applied successfuly for Bipin Thapa✅ ✅ ✅')
+            console.log('✅ ✅ ✅Share applied successfuly for Bipin Thapa✅ ✅ ✅\n')
+
         } 
         else 
         {
-                console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌');
+                console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌\n');
         }
 
     });
@@ -45,11 +47,11 @@ test.describe.serial('Login and Dashboard Flow - Series', () => {
             await asba.EnterDetailsIPO(data.Bank2,data.Casba2);
              console.log('Entered All the Details');
             await asba.ClickOnSubmitButton(data.Pin)
-            console.log('✅ ✅ ✅Share applied successfuly for Dad✅ ✅ ✅')
+            console.log('✅ ✅ ✅Share applied successfuly for Dad✅ ✅ ✅\n')
         } 
         else 
         {
-                console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌');
+                console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌\n');
         }
         
     });
@@ -68,11 +70,11 @@ test.describe.serial('Login and Dashboard Flow - Series', () => {
             await asba.EnterDetailsIPO(data.Bank3,data.Casba3);
             console.log('Entered All the Details');
             await asba.ClickOnSubmitButton(data.Pin)
-            console.log('✅ ✅ ✅Share applied successfuly for Mom✅ ✅ ✅')
+            console.log('✅ ✅ ✅Share applied successfuly for Mom✅ ✅ ✅\n')
         } 
         else 
         {
-            console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌');
+            console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌\n');
         }
 
     });
