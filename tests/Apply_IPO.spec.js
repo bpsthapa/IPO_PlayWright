@@ -9,7 +9,7 @@ test.describe('Login and Dashboard Flow - Series', () => {
     test('My IPO', async ({ page }) => {
         const asba = new myAsba(page);
         await page.goto(data.Url);
-        await asba.Login(data.UserName1,data.Password1);
+        await asba.Login(data.UserName1,data.Password1,data.Capital1);
         console.log(data.UserName1+' Login Successfuly');
         await asba.NavigateToMyAsba();
         console.log('Navigated to MyAsba page');
@@ -35,7 +35,7 @@ test.describe('Login and Dashboard Flow - Series', () => {
     test('Dad IPO', async ({ page }) => {
         const asba = new myAsba(page);
         await page.goto(data.Url);
-        await asba.Login(data.UserName2,data.Password2);
+        await asba.Login(data.UserName2,data.Password2,data.Capital2);
         console.log(data.UserName2+' Login Successfuly');
         await asba.NavigateToMyAsba();
         console.log('Navigated to MyAsba page');
@@ -59,7 +59,7 @@ test.describe('Login and Dashboard Flow - Series', () => {
     test('Mom IPO', async ({ page }) => {
         const asba = new myAsba(page);
         await page.goto(data.Url);
-        await asba.Login(data.UserName3,data.Password3);
+        await asba.Login(data.UserName3,data.Password3,data.Capital2);
         console.log(data.UserName3+' Login Successfuly');
         await asba.NavigateToMyAsba();
         console.log('Navigated to MyAsba page');

@@ -6,10 +6,12 @@ exports.myAsba = class MyAsba {
     this.page = page;
   }
 
-  async Login(UserName, Password) {
+  async Login(UserName, Password, capital) {
     await this.page.click("span.select2-selection__placeholder");
-    await this.page.fill("input[type='search']", 'GLOBAL');
-    await this.page.click("//li[text()='GLOBAL IME CAPITAL LIMITED (11200)']");
+    //await this.page.fill("input[type='search']", 'PRABHU');
+    //await this.page.click("//li[text()='NIC ASIA BANK LIMITED (13700)']");
+    
+    await this.page.click("//li[text()='"+capital+"']");
     await this.page.fill('#username', UserName);
     await this.page.fill('#password', Password);
     await this.page.click('.btn.sign-in');
