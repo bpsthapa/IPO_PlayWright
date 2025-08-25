@@ -26,6 +26,7 @@ exports.myAsba = class MyAsba {
     await this.page.waitForLoadState('networkidle'); //all the network items are loaded
     await this.page.locator("span[tooltip='Share Group']").last().waitFor();
     await this.logicToEnterEntoAppyPage();
+    await this.page.waitForLoadState('networkidle');
   }
 
   async EnterDetailsIPO(bank, crn) {
@@ -50,7 +51,9 @@ exports.myAsba = class MyAsba {
     //Need Branch Name
     await this.page.fill("#appliedKitta", '10');  // Apply kitta
     await this.page.fill("#crnNumber", crn);
+    
     await this.page.click('#disclaimer');
+    await this.page.waitForLoadState('networkidle');
     //await this.page.pause(); // Test execution will pause, and you'll be able to interact with the browser
   }
 
@@ -63,6 +66,8 @@ exports.myAsba = class MyAsba {
     //await this.page.pause();
     // await page.waitForTimeout(300000);
     await this.page.click("div[class='confirm-page-btn'] button[type='submit']")
+    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForTimeout(5000);
     console.log("The ipo has been applied")
   }
 
@@ -82,7 +87,6 @@ exports.myAsba = class MyAsba {
       {
         console.log("inside if and value of i is " + i)
         const a = i + 1
-        //await this.page.click("(//i[contains(text(),'Apply')])["+a+"]")
         try {
           await this.page.click("(//i[contains(text(),'Apply')])[" + a + "]");
         }
