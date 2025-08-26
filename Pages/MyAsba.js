@@ -8,7 +8,7 @@ exports.myAsba = class MyAsba {
 
   async Login(UserName, Password, capital) {
     await this.page.click("span.select2-selection__placeholder");
-    await this.page.fill(capital);
+    await this.page.fill("input[type='search']",capital);
     await this.page.click("//li[text()='"+capital+"']");
     await this.page.fill('#username', UserName);
     await this.page.fill('#password', Password);

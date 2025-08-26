@@ -23,13 +23,11 @@ test.describe('Login and Dashboard Flow - Series', () => {
             console.log('Entered All the Details');
             await asba.ClickOnSubmitButton(data.Pin)
             console.log('✅ ✅ ✅Share applied successfuly for Bipin Thapa✅ ✅ ✅\n')
-
         } 
         else 
         {
                 console.log('❌ ❌ ❌Ordianary Share is not found.❌ ❌ ❌\n');
         }
-
     });
 
     test('Dad IPO', async ({ page }) => {
@@ -80,5 +78,4 @@ test.describe('Login and Dashboard Flow - Series', () => {
     });
 });
 
-
-  //npx playwright test /Users/Bipinlp/Documents/Bps_Automation/IPO_PlayWright/tests/Apply_IPO.spec.js
+//npx playwright test /Users/Bipinlp/Documents/Bps_Automation/IPO_PlayWright/tests/Apply_IPO.spec.js
